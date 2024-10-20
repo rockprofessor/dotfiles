@@ -1,20 +1,16 @@
 # .bashrc
 alias v='vim'
+alias n='nvim'
 alias p='python'
-alias m='neomutt'
-alias n='nchat'
 alias s='~/scripts/launchspt.sh'
-alias c='calcure'
-alias sdn='shutdown -h now'
-alias tt='tt -nohighlight -words ~/tt/words/german10000'
 alias a='abook'
-alias w='wikit'
 alias aoc='aocli'
-alias rosi='echo "Rosi ist die Beste!"'
-alias basti='echo "Basti ist der Geschickteste!"'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias code='codewars-cli'
 
 export PATH="/home/robert/.vim/bundle/vim-live-latex-preview/bin:$PATH"
 export PATH="/home/robert/.cargo/bin:$PATH"
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc

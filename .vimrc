@@ -35,8 +35,8 @@ noremap <silent> <C-S-right> :vertical resize +1<CR>
 noremap <silent> <C-S-left> :vertical resize -1<CR>
 
 "move in split screen
-nnoremap <C-j> <C-w>h
-nnoremap <C-k> <C-w>l
+nnoremap <leader>j <C-w>h
+nnoremap <leader>k <C-w>l
 
 "run python script in new window
 nnoremap <leader>w :w<CR>:!gnome-terminal -- bash -c 'python3 %; exec bash'<CR>
