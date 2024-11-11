@@ -8,6 +8,7 @@ alias aoc='aocli'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias code='codewars-cli'
 
+
 export PATH="/home/robert/.vim/bundle/vim-live-latex-preview/bin:$PATH"
 export PATH="/home/robert/.cargo/bin:$PATH"
 

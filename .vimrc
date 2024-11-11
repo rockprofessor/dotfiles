@@ -43,7 +43,6 @@ nnoremap <leader>w :w<CR>:!gnome-terminal -- bash -c 'python3 %; exec bash'<CR>
 "run python script in vim terminal
 "nnoremap <leader>w :w<CR>:terminal python3 %<CR>
 
-
 let g:terminator_split_fraction = 0.45
 let g:terminator_split_location = 'vertical botright'
 "when horicontal splitting only
