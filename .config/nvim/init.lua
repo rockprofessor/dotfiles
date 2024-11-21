@@ -5,24 +5,10 @@ require("config.lazy")
 vim.api.nvim_set_keymap("n", "<leader>j", "<C-w>h", { desc = "jump to left window", noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>k", "<C-w>l", { desc = "jump to right window", noremap = true, silent = true })
 
--- Use wl-copy and wl-paste for clipboard operations
-vim.opt.clipboard = "unnamedplus"
-vim.g.clipboard = {
-  name = "wl-clipboard",
-  copy = {
-    ["+"] = "wl-copy",
-    ["*"] = "wl-copy",
-  },
-  paste = {
-    ["+"] = "wl-paste",
-    ["*"] = "wl-paste",
-  },
-  cache_enabled = 0,
-}
--- Delete without Clipboard
-vim.api.nvim_set_keymap("n", "x", '"_x', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "d", '"_d', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "c", '"_c', { noremap = true, silent = true })
+-- Setup Tabstops
+vim.opt.tabstop = 4 -- Number of spaces a <Tab> counts for
+vim.opt.shiftwidth = 4 -- Number of spaces for each indentation level
+vim.opt.expandtab = true -- Convert tabs to spaces
 
 -- Aktiviert die Rechtschreibprüfung nur für LaTeX-Dateien
 vim.api.nvim_create_autocmd("FileType", {
