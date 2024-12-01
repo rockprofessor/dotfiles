@@ -1,15 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](color_orange)\
 $os\
 $username\
-[](bg:color_yellow fg:color_orange)\
 $git_branch\
 $git_status\
-[](fg:color_yellow bg:color_blue)\
 $directory\
-[ ](fg:color_blue)"""
+"""
 
 palette = 'gruvbox_dark'
 
@@ -27,7 +24,7 @@ color_yellow = '#d79921'
 
 [os]
 disabled = false 
-style = "bg:color_orange fg:color_fg0"
+style = "fg:color_blue"
 
 [os.symbols]
 Fedora = "󱓟"
@@ -35,48 +32,25 @@ Linux = " 󰣛 󱝆 󱓂 l "
 
 [username]
 show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
+style_user = "fg:color_blue"
+style_root = "fg:color_blue"
 #format = '[ $user]($style)'
-format = '[ robert ]($style)'
+format = '[ rockprofessor ]($style)'
 
 [directory]
-style = "fg:color_fg0 bg:color_blue"
-format = "[ $path ]($style)"
+style = "fg:color_aqua"
+format = "[ $path> ]($style)"
 truncation_length = 6
 truncate_to_repo = false  # Set to true to prevent truncation within a repo
 truncation_symbol = "…/"
 
-[directory.substitutions]
-#"Documents" = "󰈙 "
-#"Downloads" = " "
-#"Music" = "󰝚 "
-#"Pictures" = " "
-#"Developer" = "󰲋 "
-
 [git_branch]
 symbol = ""
-style = "bg:color_yellow"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_yellow)]($style)'
+format = '[[ $symbol $branch ](fg:color_yellow)]($style)'
 
 [git_status]
 style = "bg:color_yellow"
-format = '[[($all_status$ahead_behind)](fg:color_fg0 bg:color_yellow)]($style)'
-
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:color_bg1"
-format = '[[$time](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[($all_status$ahead_behind)](fg:color_red)]($style)'
 
 [line_break]
 disabled = false
-
-[character]
-disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
