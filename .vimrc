@@ -13,9 +13,12 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'lervag/vimtex'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'github/copilot.vim'
-
 call plug#end()
 
+"search down into subfolders by using: :find test.py
+set path+=**
+
+"for using systemwide clipboard
 set clipboard+=unnamedplus
 
 "let mapleader=","

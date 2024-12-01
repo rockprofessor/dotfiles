@@ -33,6 +33,15 @@ vim.g.loaded_ruby_provider = 0
 vim.g.terminator_split_raction = 0.45
 vim.g.terminator_split_location = "vertical botright"
 
+-- setup vimtex
+vim.g.vimtex_compiler_latexmk = {
+  options = {
+    "-shell-escape",
+    "-synctex=1",
+    "-interaction=nonstopmode",
+  },
+}
+
 -- Map <leader>lc to compile LaTeX document
 vim.api.nvim_set_keymap("n", "<leader>lc", ":VimtexCompile<CR>", { noremap = true, silent = true })
 

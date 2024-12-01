@@ -2,12 +2,13 @@
 alias v='vim'
 alias n='nvim'
 alias p='python'
+alias m='tldr'
 alias s='~/scripts/launchspt.sh'
 alias a='abook'
 alias aoc='aocli'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias code='codewars-cli'
-
+alias d='dooit'
 
 export PATH="/home/robert/.vim/bundle/vim-live-latex-preview/bin:$PATH"
 export PATH="/home/robert/.cargo/bin:$PATH"
@@ -50,7 +51,6 @@ eval "$(thefuck --alias)"
 mkcd() {
     mkdir -p "$1" && cd "$1"
 }
-
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(starship init bash)"
