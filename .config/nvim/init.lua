@@ -12,12 +12,17 @@ vim.opt.expandtab = true -- Convert tabs to spaces
 
 -- Aktiviert die Rechtschreibprüfung nur für LaTeX-Dateien
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "tex",
-  callback = function()
-    vim.opt.spell = true -- Rechtschreibprüfung aktivieren
-    vim.opt.spelllang = "de" -- Sprache auf Deutsch setzen
-  end,
+    pattern = "tex",
+    callback = function()
+        vim.opt.spell = true -- Rechtschreibprüfung aktivieren
+        vim.opt.spelllang = { "de", "en" } -- Sprache auf Deutsch setzen
+    end,
 })
+
+-- Markdown Preview
+vim.g.mkdp_preview_options = {
+    katex = 1,
+}
 
 vim.keymap.set("n", "<leader>y", '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
@@ -35,29 +40,28 @@ vim.g.terminator_split_location = "vertical botright"
 
 -- setup vimtex
 vim.g.vimtex_compiler_latexmk = {
-  options = {
-    "-shell-escape",
-    "-synctex=1",
-    "-interaction=nonstopmode",
-  },
+    options = {
+        "-pdf",
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+    },
 }
 
--- Map <leader>lc to compile LaTeX document
-vim.api.nvim_set_keymap("n", "<leader>lc", ":VimtexCompile<CR>", { noremap = true, silent = true })
-
--- Map <leader>lv to view the PDF
-vim.api.nvim_set_keymap("n", "<leader>lv", ":VimtexView<CR>", { noremap = true, silent = true })
+--LaTeX setup begin
+-- line length for tex files
+vim.api.nvim_create_augroup("TexFileSettings", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tex",
+    callback = function()
+        vim.opt_local.textwidth = 80 -- Change 80 to your desired line length
+        vim.opt_local.wrap = true -- Enable line wrapping (optional)
+    end,
+})
 
 -- set okular as pdf viewer for vimtex
 vim.g.vimtex_view_general_viewer = "okular"
 vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+-- LaTeX setup end
 
--- line length for tex files
-vim.api.nvim_create_augroup("TexFileSettings", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "tex",
-  callback = function()
-    vim.opt_local.textwidth = 80 -- Change 80 to your desired line length
-    vim.opt_local.wrap = true -- Enable line wrapping (optional)
-  end,
-})
+package.path = package.path .. ";/usr/lib/luarocks/rocks-5.4/?.lua"
