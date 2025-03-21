@@ -1,0 +1,53 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$os\
+$username\
+$git_branch\
+$git_status\
+$directory\
+"""
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_blue = '#2AC3DE'
+color_aqua = '#9AA5CE'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#FF291E'
+color_yellow = '#E0AF68'
+color_green = '#9ECE6A'
+
+[os]
+disabled = false 
+style = "fg:color_blue"
+
+[os.symbols]
+Fedora = "󱓟"
+Linux = " 󰣛 󱝆 󱓂 l "
+
+[username]
+show_always = true
+style_user = "fg:color_blue"
+style_root = "fg:color_blue"
+#format = '[ $user]($style)'
+format = '[ rockprofessor ]($style)'
+
+[directory]
+style = "fg:color_green"
+format = "[ $path> ]($style)"
+truncation_length = 6
+truncate_to_repo = false  # Set to true to prevent truncation within a repo
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+format = '[[ $symbol $branch ](fg:color_yellow)]($style)'
+
+[git_status]
+style = "bg:color_yellow"
+format = '[[($all_status$ahead_behind)](fg:color_red)]($style)'
+
+[line_break]
+disabled = false
