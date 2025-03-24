@@ -12,4 +12,12 @@ return {
             require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets" })
         end,
     },
+    {
+        "junegunn/fzf",
+        build = "./install --bin", -- or just ":!./install" if you're lazy
+    },
+    {
+        "junegunn/fzf.vim",
+        dependencies = { "junegunn/fzf" },
+    },
 }

@@ -55,21 +55,55 @@ vim.g.vimtex_compiler_latexmk = {
         "-interaction=nonstopmode",
     },
 }
+-- set okular as pdf viewer for vimtex
+vim.g.vimtex_view_general_viewer = "okular"
+vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
+-- LaTeX setup end
 
 -- Typst setup
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.typ",
     command = "setlocal spell spelllang=de",
 })
+-- Typst setup end
 
+-- Markdown setup
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.md",
     command = "setlocal spell spelllang=de",
 })
-
--- set okular as pdf viewer for vimtex
-vim.g.vimtex_view_general_viewer = "okular"
-vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
--- LaTeX setup end
+-- Markdown setup end
 
 package.path = package.path .. ";/usr/lib/luarocks/rocks-5.4/?.lua"
+
+-- fzf-spell-check
+local function fzf_spell_sink(word)
+    vim.cmd('normal! "_ciw' .. word)
+end
+
+local function fzf_spell()
+    vim.cmd("set spell")
+
+    local word = vim.fn.expand("<cword>")
+    if not word or word == "" then
+        print("No word under cursor.")
+        return
+    end
+
+    local suggestions = vim.fn.spellsuggest(word)
+    if not suggestions or #suggestions == 0 then
+        return print("No suggestions for:", word)
+    end
+
+    -- Use a floating window for FZF
+    vim.fn["fzf#run"]({
+        source = suggestions,
+        sink = fzf_spell_sink,
+        down = 10,
+        window = { width = 0.25, height = 0.3, border = "rounded" }, -- Adjust this to change the window size
+    })
+end
+
+-- Map to <leader>z
+vim.keymap.set("n", "<leader>j", fzf_spell, { noremap = true, silent = true })
+-- end fzf-spell-check
