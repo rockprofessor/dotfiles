@@ -63,14 +63,14 @@ vim.g.vimtex_view_general_options = "--unique file:@pdf\\#src:@line@tex"
 -- Typst setup
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.typ",
-    command = "setlocal spell spelllang=de",
+    command = "setlocal spell spelllang=de,en",
 })
 -- Typst setup end
-
+--
 -- Markdown setup
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.md",
-    command = "setlocal spell spelllang=de",
+    command = "setlocal spell spelllang=de,en",
 })
 -- Markdown setup end
 
@@ -105,5 +105,5 @@ local function fzf_spell()
 end
 
 -- Map to <leader>z
-vim.keymap.set("n", "<leader>j", fzf_spell, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>h", fzf_spell, { desc = "fzf spell suggestion", noremap = true, silent = true })
 -- end fzf-spell-check
