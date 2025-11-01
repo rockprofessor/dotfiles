@@ -14,6 +14,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'github/copilot.vim'
 "Plug 'nordtheme/vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'vuciv/golf'
 call plug#end()
 
 "search down into subfolders by using: :find test.py
