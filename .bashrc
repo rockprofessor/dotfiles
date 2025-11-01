@@ -2,9 +2,7 @@
 alias v='vim'
 alias n='nvim'
 alias p='python'
-alias m='tldr'
-alias s='~/scripts/launchspt.sh'
-alias a='abook'
+alias man='tldr'
 alias aoc='aocli'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias code='codewars-cli'
@@ -12,10 +10,19 @@ alias d='dooit'
 alias o='okular'
 alias rmtex='rm -f *.aux *.fdb_latexmk *.fls *.log *.out *.pdf *.synctex.gz *.toc'
 alias reddit='tuir'
+alias c='calcurse'
+alias m='aerc'
+alias rm='trash'
 
 # create mkcd command
 mkcd() {
     mkdir -p "$1" && cd "$1"
+}
+
+gitit() {
+    git add .
+    git commit -m 'updated'
+    git push
 }
 
 export PATH="/home/robert/.vim/bundle/vim-live-latex-preview/bin:$PATH"
@@ -52,9 +59,6 @@ set -o vi
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# zoxide configuration
-eval "$(zoxide init --cmd cd bash)"
-
 # exa to replace ls
 alias ls='exa'
 
@@ -72,3 +76,6 @@ eval "$(starship init bash)"
 # make nvim default
 export EDITOR=nvim
 export VISUAL=nvim
+
+# zoxide configuration
+eval "$(zoxide init --cmd cd bash)"
