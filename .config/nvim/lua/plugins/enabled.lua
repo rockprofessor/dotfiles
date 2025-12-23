@@ -7,13 +7,6 @@ return {
         lazy = false,
     },
     {
-        "szymonwilczek/vim-be-better",
-        config = function()
-            -- Optional: Enable logging for debugging
-            vim.g.vim_be_better_log_file = 1
-        end,
-    },
-    {
         "L3MON4D3/LuaSnip",
         config = function()
             require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets" })
@@ -32,12 +25,30 @@ return {
         ft = "markdown",
     },
     {
-        "ThePrimeagen/vim-be-good",
-    },
-    {
         "nvzone/typr",
         dependencies = "nvzone/volt",
         opts = {},
         cmd = { "Typr", "TyprStats" },
+    },
+
+    -- ~/.config/nvim/lua/plugins/colorizer.lua
+    {
+        "norcalli/nvim-colorizer.lua",
+        -- You can lazy-load it if you like, for example:
+        event = "BufReadPost",
+        config = function()
+            require("colorizer").setup({
+                -- list of filetypes or `*` for all
+                "*",
+            }, {
+                -- default options (you can customize)
+                RGB = true,
+                RRGGBB = true,
+                names = true,
+                RRGGBBAA = false,
+                css = false,
+                mode = "background", -- or "foreground"
+            })
+        end,
     },
 }

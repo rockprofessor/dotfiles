@@ -3,7 +3,6 @@ alias v='vim'
 alias n='nvim'
 alias p='python'
 alias man='tldr'
-alias aoc='aocli'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias code='codewars-cli'
 alias d='dooit'
@@ -13,6 +12,7 @@ alias reddit='tuir'
 alias c='calcurse'
 alias m='aerc'
 alias rm='trash'
+alias spot='spotatui'
 
 # create mkcd command
 mkcd() {
@@ -23,6 +23,37 @@ gitit() {
     git add .
     git commit -m 'updated'
     git push
+}
+
+wiki() {
+    wikit "$1" | sed 's/\[[^]]*\]//g' | tr '\n' ' ' | sed 's/  */\n/g' | fold -s -w 72 | sed 's/^[[:space:]]\+//' | sed '1s/^[[:space:]"'\''\]]\+//' | ttyper /dev/stdin
+}
+
+wikide() {
+    wikit -l de "$1" | sed 's/\[[^]]*\]//g' | tr '\n' ' ' | sed 's/  */\n/g' | fold -s -w 72 | sed 's/^[[:space:]]\+//' | sed '1s/^[[:space:]"'\''\]]\+//' | ttyper /dev/stdin
+}
+
+wikitex() {
+    cat "$1" | sed 's/\[[^]]*\]//g' | tr '\n' ' ' | sed 's/  */\n/g' | fold -s -w 72 | sed 's/^[[:space:]]\+//' | sed '1s/^[[:space:]"'\''\]]\+//' | ttyper /dev/stdin
+}
+
+splittext() {
+    awk -v n="${2:-300}" '
+  {
+    for (i=1; i<=NF; i++) {
+      word=$i
+      if (!out) out=sprintf("chapter_%03d.txt", ++f)
+      printf "%s%s", word, OFS >> out
+      w++
+      if (word ~ /[.!?]["'\''”)]*$/ && w >= n) {
+        close(out)
+        out=""
+        w=0
+      }
+    }
+  }
+  END { if (out) close(out) }
+  ' "$1"
 }
 
 export PATH="/home/robert/.vim/bundle/vim-live-latex-preview/bin:$PATH"
